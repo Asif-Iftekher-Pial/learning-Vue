@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        .box{
+            background-color: bisque;
+            width: 300px;
+            text-align: center;
+            display:inline-block;
+            padding: 60px 0;
+            margin: 20px;
+
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Types of Mouse Events
+    </h1>
+    <div id="app">
+       <!-- <div class="box" @mouseover="handleEvent">moseOver</div> -->
+       <!-- if we want to pass paremeter we need to specify the event thats $event and the paremeter which is 5 -->
+       <div class="box" @mouseover="handleEvent($event,5)">moseOver with paremeter</div>
+       <div class="box" @mouseleave="handleEvent">moseLeave</div>
+       <div class="box" @dblclick="handleEvent">DubleClick</div>
+       <div class="box" @mousemove="handleMouseMove">mousePosition - {{ x }} {{ y }}</div>
+       
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        hello vue :) 
+    </h1>
+    <div id="app">
+        <p> {{ title }} - {{ author }} - {{ age }}</p>
+
+        <!-- lets take the button which will increament age -->
+        <button v-on:click="age++">Increase Age</button> 
+        <br>
+        <br>
+        <button v-on:click="age--">Decrease Age</button> 
+        <!-- here v-on mean- v = vue , on:click = event and "age " is object coming from vue js file -->
+        <div @click="author=' something else'">Change the author</div> 
+        <!-- @ symbol is the shortcut form of v-on  -->
+
+        <div @click="changeauthor('this is author argument')">Change the Author via arg</div> 
+        <!-- 'changeTitle('passingArgumnt')' is the meyhod or function that is passing argument to js file  -->
+    
+        <div @click="changeTitle">Change the title</div> 
+        <!-- 'changeTitle' is the meyhod or function that has been called from js file  -->
+        
+        </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

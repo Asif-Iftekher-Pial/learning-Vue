@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+   
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Outputting List {{ for Loop }} :v-for
+    </h1>
+    <div id="app">
+        <div v-if="showBooks==true">
+            <ul>
+                <!-- for loop -->
+                <li v-for="individualBook in books"> 
+                    <h3>{{ individualBook.title }}</h3>
+                    <p>{{ individualBook.author }}</p>
+                </li>
+            </ul>
+        </div>
+        <button @click="displayBooks">Hide/Show</button>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
