@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+   
+    <title>Document</title>
+   <style>
+       .fav{
+           background-color: aqua;
+           list-style-type: none;
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           margin: 20px;
+           border-radius: 15px;
+       }
+   </style>
+</head>
+<body>
+    <h1>
+        attribute binding-dinamic value
+    </h1>
+    <div id="app">
+        <div v-if="showBooks==true">
+            <!-- attribute binding -->
+            <!-- for making anything dynamic with value we have to use v-bind  or just colon (:) -->
+            <a v-bind:href="url">dinamic Link</a> 
+            <ul>
+                <!-- for loop -->
+                <li @click="removeClass(individualBook)" v-for="individualBook in books" :class="{fav: individualBook.dclass}"> 
+                    <img :src="individualBook.img" :alt="individualBook.title">
+                    <h3>{{ individualBook.title }}</h3>
+                    <p>{{ individualBook.author }}</p>
+                </li>
+            </ul>
+        </div>
+        <button @click="displayBooks">Hide/Show</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
