@@ -32,10 +32,7 @@
     </Modal>
     <!-- @close is the custome click event created in customModal  which is calling toggleModal function -->
   </div>
-
-  
   <button @click="toggleModal">show Modal</button>
-
   <button @click="toggleModaltwo">Show Modal Two</button>
 </template>
 
@@ -71,6 +68,9 @@ export default {
 </script>
 
 <style>
+input{
+  margin-bottom: 15px;
+}
 button{
   margin-right: 5px;
 }
