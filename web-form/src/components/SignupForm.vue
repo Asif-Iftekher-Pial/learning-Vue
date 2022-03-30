@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="handleSubmit">
       <!-- v-model will keep tracking whatever the value is being input in the textfield -->
       <label>Email</label>
       <input type="email" required v-model="email"> 
@@ -7,6 +7,7 @@
        
        <label>Password</label>
       <input type="password" required v-model="password">
+      <div v-if="passwordError" class="error">{{passwordError}}</div>
       <label>Role:</label>
       <select v-model="role">
           <option value="developer">Web Developer</option>
@@ -37,8 +38,12 @@
     <input type="text" v-model="tempSkill" @keypress="addSkill">
     <!-- every time when we use for loop ,we need to use key to bind by colon , because vue for oop use a unique key for every value -->
     <div v-for="skill in skills" :key="skill" class="pill">
-      {{ skill }}
+     <span  @click="deleteMethod(skill)">{{ skill }}</span> 
       
+    </div>
+
+    <div class="submitClass">
+      <button>Create Account</button>
     </div>
   </form>
   <p>Email: {{email}}</p>
@@ -59,7 +64,8 @@ data(){
         terms : false,
         // names : []
         tempSkill : '',
-        skills : []
+        skills : [],
+        passwordError : ''
 
 
     }
@@ -74,7 +80,26 @@ methods: {
       }
       this.tempSkill = ''
     }
+  },
+  deleteMethod(skill){
+    //  alert(skill)
+      this.skills = this.skills.filter((item) => {
+        return skill !==item
+      })
+  },
+  handleSubmit(){
+    // e.preventDefault();
+    // console.log('form submited');
+    this.passwordError = this.password.length > 5 ? '' : 'password must be 6 char long'
+    if(!this.passwordError){
+      console.log('email: ',this.email);
+      console.log('password: ',this.password);
+      console.log('role: ',this.role);
+      console.log('skills: ',this.skills);
+      console.log('terms accepted: ',this.terms);
+    }
   }
+
 }
 
 }
@@ -113,5 +138,35 @@ methods: {
       margin: 0 10px 0 0;
       position:relative;
       top:2px;
+  }
+  .pill{
+    display: inline-block;
+    margin:20px 10px 0 0;
+    padding:6px 12px;
+    background:#eee;
+    border-radius: 12px;
+    font-size: 12px;
+    letter-spacing: 1px;;
+    font-weight: bold;
+    color: #777;
+    cursor:pointer;
+
+  }
+  button{
+    background: #0b6dff;
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: white;
+    border-radius:20px;
+  }
+  .submitClass{
+    text-align: center;
+  }
+  .error{
+    color: #ff0062;
+    margin-top: 10px;
+    font-size: 0.8em;
+    font-weight: bold;
   }
 </style>
